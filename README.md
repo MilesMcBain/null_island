@@ -1,2 +1,12 @@
-# null_island
-A stab at communicating science with VR for Bayes on the beach 2017
+# Null Island
+
+Null Island.
+
+Built with [A-Frame](https://aframe.io).
+
+## Setup
+
+```sh
+npm install
+npm run start
+```
