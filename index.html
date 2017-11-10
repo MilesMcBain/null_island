@@ -10,8 +10,9 @@
     <script src="./sealevelmap.js"></script>
   </head>
   <body>
-    <a-scene stats>
+    <a-scene>
       <a-assets>
+        <a-asset-item id="island" src="./data/island.gltf"></a-asset-item>
         <a-asset-item id="island2" src="./data/island.obj"></a-asset-item>
         <a-asset-item id="island2_material" src="./data/island.mtl"></a-asset-item>
         <a-asset-item id="ruler" src="./data/model.obj"></a-asset-item>
@@ -19,12 +20,16 @@
       </a-assets>
 
       <!-- Viewer Camera -->
-      <a-camera rotation = "4.469 950.62 0" position = "-1.4 0 0.457" wasd-controls="fly: true"></a-camera>
+      <a-entity position="-2.93 1.6 0.89" rotation="0 -130 0">
+          <a-camera wasd-controls="fly:true" user-height="0"></a-camera>
+      </a-entity>
 
       <!-- Island Fixed in Blender -->
       <a-entity obj-model = "obj: #island2; mtl: #island2_material" position="0 1 -3" 
       rotation="0 0 0" scale="0.4 0.4 0.4"></a-entity>
       
+      <a-entity gltf-model="#island" scale="0.4 0.4 0.4" position="0 1 -3"></a-entity>
+
       <!-- Background sky. -->
       <a-gradient-sky geometry="radius:1000;thetaLength:180.11" material="bottomColor:255 255 255;topColor:66 134 244"></a-gradient-sky>
 
