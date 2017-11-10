@@ -4,28 +4,41 @@
     <meta charset="utf-8">
     <title>Null Island</title>
     <meta name="description" content="Null Island">
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script> 
+    <script src="./sealevelmap.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene stats>
       <a-assets>
-        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
-        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous">
-        <a-asset-item id="island" src="./data/CHAHIN_ISLAND.gltf"></a-asset-item>
         <a-asset-item id="island2" src="./data/island.obj"></a-asset-item>
         <a-asset-item id="island2_material" src="./data/island.mtl"></a-asset-item>
+        <a-asset-item id="ruler" src="./data/model.obj"></a-asset-item>
+        <a-asset-item id="ruler_material" src="./data/materials.mtl"></a-asset-item>
       </a-assets>
+
+      <!-- Viewer Camera -->
+      <a-camera rotation = "4.469 950.62 0" position = "-1.4 0 0.457" wasd-controls="fly: true"></a-camera>
 
       <!-- Island Fixed in Blender -->
       <a-entity obj-model = "obj: #island2; mtl: #island2_material" position="0 1 -3" 
-      rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
-      <!-- Background sky. -->
-      <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky>
-
-      <!-- Ground. -->
-      <a-circle src="#groundTexture" rotation="-90 0 0" radius="32"></a-circle>
-
+      rotation="0 0 0" scale="0.4 0.4 0.4"></a-entity>
       
+      <!-- Background sky. -->
+      <a-gradient-sky geometry="radius:1000;thetaLength:180.11" material="bottomColor:255 255 255;topColor:66 134 244"></a-gradient-sky>
+
+      <!-- Water -->
+      <a-entity ocean="width: 45; depth: 45; density: 25; amplitude: 0.05; amplitudeVariance: 0.4; speed: 0.5; speedVariance: 1.0" position="0 -0.2 0"
+      rotation="-90 0 0" sealevelmap="rate:30"></a-entity>
+
+      <!-- 2M Marker -->
+      <a-entity obj-model = "obj: #ruler; mtl: #ruler_material" position="0 0.16 4.80"></a-entity>
+
+      <!-- Year Label -->
+      <a-text id="yearlabel" value="" position="1.979 0.469 1.618" rotation="-95.83 229.40000000000003 0" scale="3.9200000000000004 10.920000000000002 1.06" align="center" color="#000000" text="color:#4e3b0c"></a-text>
+
+          
     </a-scene>
   </body>
 </html>
