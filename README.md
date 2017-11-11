@@ -15,7 +15,7 @@ The waves are made using the [Ocean A-Frame component written by Don McCurdy](ht
 
 ## View it Live 
 
-https://humdrum-appendix.glitch.com
+https://humdrum-appendix.glitch.me
 
 ## Get the source
 * Glitch: https://glitch.com/edit/#!/humdrum-appendix
