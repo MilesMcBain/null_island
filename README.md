@@ -1,5 +1,7 @@
 # Null Island
 
+![](https://cdn.rawgit.com/MilesMcBain/null_island/660fa692/inst/media/ni.gif)
+
 Welcome to Null Island.
 
 This is a a visualisation of observed and projected South Pacific mean sea level rise from 1974 to 2100. Over the time range of the visualisation the ocean **rises by 0.607m**.
