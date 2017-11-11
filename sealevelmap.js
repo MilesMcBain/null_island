@@ -532,7 +532,6 @@ AFRAME.registerComponent('sealevelmap', {
                     this.year++
                 }
                 this.counter= 0  
-                console.log("y: " + this.el.object3D.getWorldPosition().y)
             }
         }   
     }
