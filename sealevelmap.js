@@ -1,6 +1,7 @@
 AFRAME.registerComponent('sealevelmap', {
     schema: {
-        rate: {type: "number", default: 120}
+        rate: {type: "number", default: 120},
+        start: {type: "boolean", default: false}
     },
     init: function(){
         this.scenariomap = 
@@ -520,18 +521,20 @@ AFRAME.registerComponent('sealevelmap', {
         this.year = 1974
     },
     tick: function(){
-        this.counter++
-        if(this.counter >= this.data.rate){
-            scenario_match = this.scenariomap.filter(item => item.key == this.year)[0]
-            if(scenario_match) {
-                new_y = scenario_match.value + this.original_pos.y
-                this.el.setAttribute('position', {x: this.original_pos.x, y: new_y, z: this.original_pos.z })
-                this.el.sceneEl.querySelector('#yearlabel').setAttribute("value", this.year)
-                this.year++
+        if(this.data.start){
+            this.counter++
+            if(this.counter >= this.data.rate){
+                scenario_match = this.scenariomap.filter(item => item.key == this.year)[0]
+                if(scenario_match) {
+                    new_y = scenario_match.value + this.original_pos.y
+                    this.el.setAttribute('position', {x: this.original_pos.x, y: new_y, z: this.original_pos.z })
+                    this.el.sceneEl.querySelector('#yearlabel').setAttribute("value", this.year)
+                    this.year++
+                }
+                this.counter= 0  
+                console.log("y: " + this.el.object3D.getWorldPosition().y)
             }
-            this.counter= 0  
-        console.log("y: " + this.el.object3D.getWorldPosition().y)
-        }
+        }   
     }
 })
 

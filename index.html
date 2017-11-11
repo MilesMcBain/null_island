@@ -8,6 +8,7 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script> 
     <script src="./sealevelmap.js"></script>
+    <script src="./handleclicks.js"></script>
   </head>
   <body>
     <a-scene>
@@ -17,32 +18,40 @@
         <a-asset-item id="island2_material" src="./data/island.mtl"></a-asset-item>
         <a-asset-item id="ruler" src="./data/model.obj"></a-asset-item>
         <a-asset-item id="ruler_material" src="./data/materials.mtl"></a-asset-item>
+        <image id="playicon" crossorigin="anonymous" src="./data/play-symbol.png"></a-asset-item>
       </a-assets>
 
       <!-- Viewer Camera -->
-      <a-entity position="-2.93 1.6 0.89" rotation="0 -130 0">
-          <a-camera wasd-controls="fly:true" user-height="0"></a-camera>
+      <a-entity >
+          <a-camera position="-0.841 1.611 -0.464" rotation="0 -130 0" wasd-controls="fly:true" user-height="0" active="true">
+            <a-cursor fuse="true" material="opacity: 0.4">
+            </a-cursor>
+          </a-camera>
       </a-entity>
 
       <!-- Island Fixed in Blender -->
-      <a-entity obj-model = "obj: #island2; mtl: #island2_material" position="0 1 -3" 
-      rotation="0 0 0" scale="0.4 0.4 0.4"></a-entity>
-      
-      <a-entity gltf-model="#island" scale="0.4 0.4 0.4" position="0 1 -3"></a-entity>
+      <a-entity gltf-model="#island" scale="0.5 0.5 0.5" position="0 1.0 -3"></a-entity> 
 
       <!-- Background sky. -->
       <a-gradient-sky geometry="radius:1000;thetaLength:180.11" material="bottomColor:255 255 255;topColor:66 134 244"></a-gradient-sky>
 
       <!-- Water -->
-      <a-entity ocean="width: 45; depth: 45; density: 25; amplitude: 0.05; amplitudeVariance: 0.4; speed: 0.5; speedVariance: 1.0" position="0 -0.2 0"
-      rotation="-90 0 0" sealevelmap="rate:30"></a-entity>
+      <a-entity id="ocean" ocean="width: 45; depth: 45; density: 25; amplitude: 0.05; amplitudeVariance: 0.4; speed: 0.5; speedVariance: 1.0" position="0 -0.2 0"
+      rotation="-90 0 0" sealevelmap="rate:40"></a-entity>
 
       <!-- 2M Marker -->
-      <a-entity obj-model = "obj: #ruler; mtl: #ruler_material" position="0 0.16 4.80"></a-entity>
+      <a-entity obj-model = "obj: #ruler; mtl: #ruler_material" position="0 0.170 5.320"></a-entity>
 
       <!-- Year Label -->
-      <a-text id="yearlabel" value="" position="1.979 0.469 1.618" rotation="-95.83 229.40000000000003 0" scale="3.9200000000000004 10.920000000000002 1.06" align="center" color="#000000" text="color:#4e3b0c"></a-text>
-
+      <a-text id="yearlabel" value="1974" position="1.979 0.489 1.618" rotation="-93.86 229.28 0.39" scale="3.92 10.92 1.06" 
+      align="center" color="#000000" text="color:#4e3b0c"></a-text>
+      
+      <!-- play control -->
+      <a-triangle id="play" height="0.6" width="0.6" position="0.559 0.569 0.538" rotation="-95.42 135.2 -0.01" 
+      material="opacity:0.96" scale="0.67 0.63 1" handleclicks="" color="black">
+      </a-triangle>
+        
+  </a-plane>
           
     </a-scene>
   </body>
